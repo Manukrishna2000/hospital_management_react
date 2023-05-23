@@ -58,9 +58,9 @@ export default function ViewDept_user() {
       <MDBTable align='middle'>
         <MDBTableHead>
           <tr>
+            <th scope='col'>Image</th>
             <th scope='col'>Department Name</th>
             <th scope='col'>Year</th>
-            <th scope='col'>Image</th>
             <th scope='col'>Description</th>
             
           </tr>
@@ -68,6 +68,10 @@ export default function ViewDept_user() {
         <MDBTableBody>
           {dept.map((dept) => (
             <tr key={dept._id}>
+              <td>
+                                <img src={dept.image} alt="" height={100} width={100}/>
+
+              </td>
               <td>
                 <div className='d-flex align-items-center'>
                   <div className='ms-3'>
@@ -77,10 +81,6 @@ export default function ViewDept_user() {
               </td>
               <td>
                 <p className='fw-normal mb-1'>{dept.Year}</p>
-              </td>
-              <td>
-                                <img src={dept.image} alt="" height={100} width={100}/>
-
               </td>
               <td>{dept.Description}</td>
               <Link to={`/Userview_dept/${dept._id}`}>

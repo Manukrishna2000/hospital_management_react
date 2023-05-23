@@ -46,3 +46,7 @@ background-repeat: no-repeat;
   left: 50%;
   top: 12rem;
 }
+body{
+  background-image: url('bg.jpg');
+background-size: 100%;
+}

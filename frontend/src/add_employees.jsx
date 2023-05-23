@@ -45,15 +45,54 @@ export default function Emp() {
 
 
     useEffect(() => {
-      axios.get('http://localhost:4001/view_department')
+   console.log(localStorage.getItem('token'));
+  
+      axios.get('http://localhost:4001/view_department',{headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}` ,
+        
+      }
+    })
         .then(({ data }) => {
           console.log(data);
-          setvalue(data);
+          if(data.status==false){
+          
+            Navigator('/')
+            
+          }
+  
         })
         .catch(error => {
           console.log(error);
         });
     }, []);
+  
+
+
+
+    useEffect(() => {
+      axios.get('http://localhost:4001/view_department',{headers:{
+      'Authorization': `Bearer ${localStorage.getItem('token')}` ,
+      
+    }
+  })
+      .then(({ data }) => {
+        console.log(data);
+        setvalue(data)
+        if(data.status==false){
+        
+          Navigator('/')
+          
+        }
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+
+
+
     useEffect(() => {
       if (selectedDept) {
         axios.get(`http://localhost:4001/view_department_head/${selectedDept}`)
@@ -121,7 +160,7 @@ export default function Emp() {
                         name='Name'
                         value={setdept.Name} 
                         onChange={handleChange}/>
-        </Form.Group>
+        </Form.Group><br></br>
         <FileBase64
        
         multiple={ false }
@@ -131,15 +170,15 @@ export default function Emp() {
           // console.log(res.base64);
           setdept({ ...dept, image: res.base64});
           console.log(dept);
-        } } />
-        <Form.Group>
+        } } /><br></br>
+        <br></br><Form.Group>
           <Form.Label>Employee Number</Form.Label>
           <Form.Control type="number" 
                         placeholder="Employee number"
                         name='E_number'
                         value={setdept.E_number} 
                         onChange={handleChange} />
-        </Form.Group>
+        <br></br></Form.Group>
         <Form.Group>
           <Form.Label>Profile Description</Form.Label>
           <Form.Control type="text" 
@@ -149,7 +188,7 @@ export default function Emp() {
                         onChange={handleChange} />
         </Form.Group>
         <Form.Group>
-        <Form.Label>Age</Form.Label>
+        <br></br><Form.Label>Age</Form.Label>
           <Form.Control type="number" 
                         placeholder="Age"
                         name='Age'
@@ -174,10 +213,10 @@ export default function Emp() {
               <MenuItem value={item.Dept_Name} name='Dept_name'>{item.Dept_Name}</MenuItem>
               )
             })}
-            </Select><br></br>
+            </Select>
           </FormControl>
           
-          <FormControl fullWidth>
+          <br></br><FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Report To</InputLabel>
           <Select
               labelId="demo-simple-select-label"
@@ -193,8 +232,9 @@ export default function Emp() {
       {item.Name}
     </MenuItem>
   ))}
-            </Select><br></br>
+            </Select>
           </FormControl>
+          <br></br>
         <Button variant="primary" type="submit">Add
         </Button>
         <ToastContainer

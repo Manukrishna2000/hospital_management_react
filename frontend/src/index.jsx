@@ -27,6 +27,7 @@ import Admin_ViewHead from './admin_view_department_heads';
 import Edit_Dept_heads from './edit_dept_heads';
 import Logout from './logout';
 import Forgot from './forgot';
+import Email from './email';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,6 +36,7 @@ root.render(
       <Routes>
         <Route path='/' element={<App />}>
           <Route path='/main' element={<LoginForm/>}/>
+          <Route path='/email' element={<Email/>}/>
           <Route path='view_emp' element={<ViewEmp/>}/>
           <Route path='emp_view/:id' element={<Empview/>}/>
           <Route path='viewmore_dept_head/:id' element={<View_Dept_Head/>}/>

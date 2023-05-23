@@ -43,15 +43,26 @@ export default function Dhead() {
 
 
     useEffect(() => {
-      axios.get('http://localhost:4001/view_department')
-        .then(({ data }) => {
-          console.log(data);
-          setvalue(data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }, []);
+      axios.get('http://localhost:4001/view_department',{headers:{
+      'Authorization': `Bearer ${localStorage.getItem('token')}` ,
+      
+    }
+  })
+      .then(({ data }) => {
+        console.log(data);
+        setvalue(data)
+        if(data.status==false){
+        
+          Navigator('/')
+          
+        }
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
     
     function handleChange(event) {
       setdept({ ...dept, [event.target.name]: event.target.value });
@@ -95,7 +106,7 @@ export default function Dhead() {
                         name='Name'
                         value={setdept.Name} 
                         onChange={handleChange}/>
-        </Form.Group>
+        </Form.Group><br></br>
         <FileBase64
         multiple={ false }
         onDone={(res)=>{
@@ -103,7 +114,7 @@ export default function Dhead() {
           // console.log(res.base64);
           setdept({ ...dept, image: res.base64});
         } } />
-        <Form.Group>
+        <Form.Group><br></br>
           <Form.Label>Employee Number</Form.Label>
           <Form.Control type="number" 
                         placeholder="Employee number"
@@ -111,7 +122,7 @@ export default function Dhead() {
                         value={setdept.E_number} 
                         onChange={handleChange} />
         </Form.Group>
-        <Form.Group>
+        <Form.Group><br></br>
         <Form.Label>Age</Form.Label>
           <Form.Control type="number" 
                         placeholder="Age"

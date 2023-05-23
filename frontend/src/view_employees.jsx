@@ -57,14 +57,17 @@ export default function ViewEmp() {
       <MDBTable align='middle'>
         <MDBTableHead>
           <tr>
+            <th scope='col'>Image</th>
             <th scope='col'>Employee Name</th>
             <th scope='col'>Employee Number</th>
-            <th scope='col'>Image</th>
           </tr>
         </MDBTableHead>
         <MDBTableBody>
           {dept.map((dept) => (
             <tr key={dept._id}>
+              <td>
+                <img src={dept.image} alt="" height={100} width={100}/>
+              </td>
               <td>
                 <div className='d-flex align-items-center'>
                   <div className='ms-3'>
@@ -74,9 +77,6 @@ export default function ViewEmp() {
               </td>
               <td>
                 <p className='fw-normal mb-1'>{dept.E_number}</p>
-              </td>
-              <td>
-                <img src={dept.image} alt="" height={100} width={100}/>
               </td>
               <td>
                 <MDBBadge color='success' pill>

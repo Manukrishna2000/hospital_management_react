@@ -59,41 +59,38 @@ export default function Admin_ViewHead() {
     <div style={{
     position: 'relative',
     left: '20%',
-    width: '90%'
+    width: '80%'
 }}>
       <MDBTable align='middle'>
         <MDBTableHead>
           <tr>
-            <th scope='col'>Department Head Name</th>
-            <th scope='col'>E_number</th>
             <th scope='col'>Image</th>
+            <th scope='col'>Department Head Name</th>
+            <th scope='col'>Department  Name</th>
+            <th scope='col'>E_number</th>
           </tr>
         </MDBTableHead>
         <MDBTableBody>
           {dept.map((dept) => (
             <tr key={dept._id}>
               <td>
-                <div className='d-flex align-items-center'>
-                  <div className='ms-3'>
-                    {dept.Name}
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className='fw-normal mb-1'>{dept.E_number}</p>
-              </td>
-              <td>
                                 <img src={dept.image} alt="" height={100} width={100}/>
 
                 </td>
               <td>
-                <MDBBadge color='success' pill>
-                </MDBBadge>
+                
+                    {dept.Name}
+                
               </td>
+              <td>{dept.Dept_Name}</td>
+              <td>
+                <p className='fw-normal mb-1'>{dept.E_number}</p>
+              </td>
+           
               <td>
               <Link to={`/home/edit_dept_head/${dept._id}`}>
                   <Button variant='primary'>Edit</Button>
-                </Link>
+                </Link><br></br>
                 <Button variant="primary" type="submit" onClick={() => handleDelete(dept._id)}>Delete</Button>
               </td>
             </tr>

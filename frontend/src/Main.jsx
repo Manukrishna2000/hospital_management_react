@@ -93,6 +93,7 @@ export default function LoginForm() {
           >
             Sign In
           </Button>
+          {/* <Link to="/email">forgot password</Link> */}
           {invalid &&
 <h6><font style={{color:'red',align:'center'}}>invalid username or password</font></h6>
 }

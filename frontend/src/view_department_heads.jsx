@@ -63,15 +63,19 @@ export default function ViewHead() {
       <MDBTable align='middle'>
       <MDBTableHead>
         <tr>
-          <th scope='col'>Department Head Name</th>
-          <th scope='col'>E_number</th>
           <th scope='col'>Image</th>
+          <th scope='col'>Department Head Name</th>
+        
+          <th scope='col'>E_number</th>
           <th></th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
         {dept.map((dept) => (
           <tr key={dept._id}>
+      <td>
+                        <img src={dept.image} alt="" height={100} width={100}/>
+      </td>
             <td>
               <div className='d-flex align-items-center'>
                 <div className='ms-3'>
@@ -79,11 +83,9 @@ export default function ViewHead() {
                 </div>
               </div>
             </td>
+            
             <td>
               <p className='fw-normal mb-1'>{dept.E_number}</p>
-            </td>
-            <td>
-                              <img src={dept.image} alt="" height={100} width={100}/>
 
             </td>
             <td>

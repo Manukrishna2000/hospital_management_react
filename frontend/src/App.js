@@ -35,7 +35,6 @@ export default function App() {
   return (
     
     <div>
-
   
    <Navbar bg="dark" className='navbar' variant="dark">
         <Container>
@@ -59,8 +58,9 @@ export default function App() {
       </Navbar>
       <Outlet/>
 
-  
-    
+    <div className='image'>
     </div>
+    </div>
+      
   );
 }

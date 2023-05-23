@@ -94,7 +94,7 @@ export default function Dept() {
                         name='Dept_Name'
                         value={setdept.Dept_Name} 
                         onChange={handleChange}/>
-        </Form.Group>
+        </Form.Group><br></br>
         <Form.Group>
           <Form.Label>Department profile image:</Form.Label>
           {/* <Form.Control type="file" 
@@ -108,7 +108,7 @@ export default function Dept() {
           setdept({ ...dept, image: res.base64});
         } } />
                         
-        </Form.Group>
+        </Form.Group><br></br>
         <Form.Group>
           <Form.Label>Year Founded</Form.Label>
           <Form.Control type="number" 
@@ -117,14 +117,14 @@ export default function Dept() {
                         value={setdept.Year} 
                         onChange={handleChange} />
         </Form.Group>
-        <Form.Group>
+        <Form.Group><br></br>
         <Form.Label>Description</Form.Label>
           <Form.Control type="text" 
                         placeholder="Description"
                         name='Description'
                         value={setdept.Description}
                         onChange={handleChange}  />
-        </Form.Group>
+        </Form.Group><br></br>
         <Button variant="primary" type="submit">Add
         </Button>
         <ToastContainer
