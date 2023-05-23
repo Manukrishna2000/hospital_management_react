@@ -79,7 +79,7 @@ app.post('/forgot',async function(req,res,next){
     console.log(req.body);
     res.json({message:'successful'})
 })
-app.get('/view_department', async function(req,res,next){
+app.get('/view_department',auth, async function(req,res,next){
     let data=await db.collection('Department').find().toArray()
     console.log(data);
     res.json(data)
